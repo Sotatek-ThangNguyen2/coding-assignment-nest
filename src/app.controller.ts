@@ -18,7 +18,7 @@ export class AppController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   async upload(@UploadedFile() file: Express.Multer.File) {
-    return await this.fileService.upload(file);
+    return await this.fileService.upload(file.buffer, file.originalname);
   }
 
   @Get('images/:key')
